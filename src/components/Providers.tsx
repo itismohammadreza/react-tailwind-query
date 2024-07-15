@@ -4,6 +4,7 @@ import { Toast } from "./Toast";
 import { RouterProvider } from "react-router-dom";
 import { router } from "@root/router";
 import { PropsWithChildren } from "react";
+import { PrimeReactProvider } from "primereact/api";
 import '@locales/i18n';
 import '@styles/global.scss';
 
@@ -18,11 +19,13 @@ export const Providers = ({children}: PropsWithChildren) => {
   });
 
   return (
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router}/>
-        <Loading/>
-        <Toast/>
-        {children}
-      </QueryClientProvider>
+      <PrimeReactProvider value={{ripple: true}}>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router}/>
+          <Loading/>
+          <Toast/>
+          {children}
+        </QueryClientProvider>
+      </PrimeReactProvider>
   );
 }
