@@ -18,11 +18,13 @@ export const Providers = ({children}: PropsWithChildren) => {
   });
 
   return (
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router}/>
-        <Loading/>
-        <Toast/>
-        {children}
-      </QueryClientProvider>
+      <PrimeReactProvider value={{ripple: true}}>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router}/>
+          <Loading/>
+          <Toast/>
+          {children}
+        </QueryClientProvider>
+      </PrimeReactProvider>
   );
 }
